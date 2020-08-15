@@ -5,15 +5,15 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CSRFProtect
 from redis import StrictRedis
 
-from config import Config
+from config import config
 
 app = Flask(__name__)
 # 加载配置
-app.config.from_object(Config)
+app.config.from_object(config["testing"])
 # 初始化数据库
 db = SQLAlchemy(app)
 # 初始化Redis存储对象
-redis_store = StrictRedis(host=1234, port=Config.REDIS_PORT)
+redis_store = StrictRedis(host=config["testing"], port=config["testing"].REDIS_PORT)
 # 开启当前项目CSRF保护,只做服务器验证功能
 CSRFProtect(app)
 # 设置session保存指定位置
