@@ -3,9 +3,11 @@ from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
 
-from info import app,db
+from info import create_app,db
 
-
+# 通过指定的配置名字创建对应位置的APP
+# create_app就类似于工厂方法
+app = create_app("development")
 
 manager = Manager(app)
 # 将app与db关联
