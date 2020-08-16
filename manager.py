@@ -5,8 +5,10 @@ import logging
 from flask import current_app
 from flask import session
 
-
 from info import create_app,db
+
+# manager.py是程序启动的入口，只关心启动的相关参数以及内容，
+# 不关心具体该如何创建app或相关业务逻辑
 
 # 通过指定的配置名字创建对应位置的APP
 # create_app就类似于工厂方法
@@ -20,20 +22,7 @@ manager.add_command('db', MigrateCommand)
 
 
 
-@app.route('/')
-def index():
-    # session["name"] = "itheima"
 
-    # 测试打印日志
-    logging.debug('测试debug')
-    logging.warning('测试warning')
-    logging.error('测试error')
-    logging.fatal('测试fatal')
-
-    # current_app.logger.error('测试error')
-
-
-    return 'index'
 
 
 if __name__ == '__main__':
